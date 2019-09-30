@@ -9,13 +9,17 @@ defmodule LiveCanvasWeb.PageLive do
   def render(assigns) do
     ~L"""
     <div>
-      <canvas 
-        phx-update="ignore" 
-        phx-hook="canvas" 
+      <div
+        phx-hook="canvas"
         data-particles="<%= Jason.encode!(@particles) %>"
       >
-        Canvas is not supported!
-      </canvas>
+        <canvas 
+          phx-update="ignore" 
+          phx-hook="canvas" 
+        >
+          Canvas is not supported!
+        </canvas>
+      </div>
       <div class="buttons">
         <button phx-click="updates_per_second" value="32">30 updates per second</button>
         <button phx-click="updates_per_second" value="16">60 updates per second</button>

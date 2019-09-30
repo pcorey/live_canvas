@@ -17,6 +17,7 @@ import "phoenix_html";
 // import socket from "./socket"
 
 import LiveSocket from "phoenix_live_view";
+import { Socket } from "phoenix";
 
 const getPixelRatio = context => {
   var backingStore =
@@ -58,7 +59,7 @@ const cubehelix = (s, r, h) => d => {
 let hooks = {
   canvas: {
     mounted() {
-      let canvas = this.el;
+      let canvas = this.el.firstElementChild;
       let context = canvas.getContext("2d");
       let ratio = getPixelRatio(context);
       let colorizer = cubehelix(3, 0.5, 2.0);
@@ -135,6 +136,6 @@ let hooks = {
   }
 };
 
-let liveSocket = new LiveSocket("/live", { hooks });
+let liveSocket = new LiveSocket("/live", Socket, { hooks });
 
 liveSocket.connect();
