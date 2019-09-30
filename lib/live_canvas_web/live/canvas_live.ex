@@ -13,10 +13,7 @@ defmodule LiveCanvasWeb.PageLive do
         phx-hook="canvas"
         data-particles="<%= Jason.encode!(@particles) %>"
       >
-        <canvas 
-          phx-update="ignore" 
-          phx-hook="canvas" 
-        >
+        <canvas phx-update="ignore">
           Canvas is not supported!
         </canvas>
       </div>
